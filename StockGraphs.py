@@ -14,7 +14,7 @@ amtOfStocks = input("How many stocks would you like to add?\n")
 amtOfStocks = int(amtOfStocks)
 
 while amtOfStocks > 0:
-    userTicker = input("Company youd like to add")
+    userTicker = input("Company youd like to add\n")
     company = closingPrice(userTicker)
     plt.plot(company)
 
