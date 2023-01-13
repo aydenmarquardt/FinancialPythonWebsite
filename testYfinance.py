@@ -2,22 +2,22 @@ import yfinance as yf
 import pandas as pd
 import mpld3
 from matplotlib import pyplot as plt
+import cryptocmd as ccmd
 
-def closingPrice(Ticker):
-    close = pd.DataFrame(yf.download(Ticker, period = "3mo", interval = '1d')["Adj Close"])
-    return close
 
-#userChoice = input("What Companies closing cost would you like to look at?\n")
 
-amtOfStocks = input("How many stocks would you like to add?\n")
+def test():
+    Ticker = "BTC"
+    
+    scraper = ccmd.CmcScraper(Ticker, "15-10-2014", "15-10-2022")
+    
+    Data = scraper.get_dataframe()
+    
+    closingPrice = Data["Close"]
+    
+    Date = Data["Date"]
 
-amtOfStocks = int(amtOfStocks)
+    plt.plot(Date, closingPrice)
+    plt.show()
 
-while amtOfStocks > 0:
-    userTicker = input("Company youd like to add")
-    company = closingPrice(userTicker)
-    plt.plot(company)
-
-    amtOfStocks -= 1
-
-plt.show()
+test()
